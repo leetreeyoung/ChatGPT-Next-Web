@@ -1,4 +1,4 @@
-name: Sync to ChatGPT-Next-Web-Storage-2
+name: Sync to ChatGPT-Next-Web-Overarch-2
 
 # 允许手动触发工作流
 on:
@@ -20,7 +20,7 @@ jobs:
     - name: Checkout target repository
       uses: actions/checkout@v2
       with:
-        repository: leetreeyoung/ChatGPT-Next-Web-Storage-2
+        repository: leetreeyoung/ChatGPT-Next-Web-Overarch-2
         token: ${{secrets.GITHUB_TOKEN }}
         ref: main
         path: target-repo
