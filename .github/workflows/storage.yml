@@ -24,7 +24,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: leetreeyoung/ChatGPT-Next-Web-Storage-2
-        token: ${{env: secrets.A_TOKEN }}
+        token: ${{env:secrets.A_TOKEN }}
         ref: main
         path: target-repo
 
