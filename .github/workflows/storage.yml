@@ -1,0 +1,35 @@
+name: Sync to ChatGPT-Next-Web-Storage-2
+
+# 允许手动触发工作流
+on:
+  schedule:
+    - cron: '0 3 * * *'  # 定时触发（例如，每天凌晨3点）
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source repository
+      uses: actions/checkout@v2
+      with:
+        repository: leetreeyoung/ChatGPT-Next-Web
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Checkout target repository
+      uses: actions/checkout@v2
+      with:
+        repository: leetreeyoung/ChatGPT-Next-Web-Storage-2
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: target-repo
+
+    - name: Sync changes
+      run: |
+        rsync -a --delete --exclude='.git' . target-repo/
+        cd target-repo
+        git config --global user.email "yangzhenzhen0119@gmail.com"
+        git config --global user.name "leetreeyoung"
+        git add .
+        git commit -m "Sync changes from ChatGPT-Next-Web" || echo "No changes to commit"
+        git push origin main
