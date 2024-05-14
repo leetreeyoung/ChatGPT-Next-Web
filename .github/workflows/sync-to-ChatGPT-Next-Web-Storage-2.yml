@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: leetreeyoung/ChatGPT-Next-Web-Storage-2
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.A_TOKEN }}
         path: target-repo
 
     - name: Sync changes
