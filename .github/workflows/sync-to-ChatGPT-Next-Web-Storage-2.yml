@@ -4,6 +4,7 @@ name: Sync to ChatGPT-Next-Web-Storage-2
 on:
   schedule:
     - cron: '0 3 * * *'
+    workflow_dispatch:  # 手动触发
 
 jobs:
   sync:
