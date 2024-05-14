@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Sync Echo
+      run: |
+        echo ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     - name: Checkout source repository
       uses: actions/checkout@v2
       with:
