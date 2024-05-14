@@ -22,6 +22,7 @@ jobs:
       with:
         repository: leetreeyoung/ChatGPT-Next-Web-Storage-2
         token: ${{ secrets.GITHUB_TOKEN }}
+        ref: main
         path: target-repo
 
     - name: Sync changes
