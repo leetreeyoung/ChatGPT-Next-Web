@@ -3,7 +3,7 @@ name: Sync to ChatGPT-Next-Web-SL-2
 # 允许手动触发工作流
 on:
   schedule:
-    - cron: '0 3 * * *'  # 定时触发（例如，每天凌晨3点）
+    - cron: '0 0 * * *'  # 定时触发（例如，每天凌晨3点）
   workflow_dispatch:  # 手动触发
 
 jobs:
@@ -16,6 +16,8 @@ jobs:
       with:
         repository: leetreeyoung/ChatGPT-Next-Web
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 1
+        path: source-repo
 
     - name: Checkout target repository
       uses: actions/checkout@v2
@@ -27,7 +29,7 @@ jobs:
 
     - name: Sync changes
       run: |
-        rsync -a --delete --exclude='.git' . target-repo/ || true
+        rsync -av --delete --exclude='.git' source-repo/ target-repo/ || true
         cd target-repo
         git config --global user.email "yangzhenzhen0119@gmail.com"
         git config --global user.name "leetreeyoung"
