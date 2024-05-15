@@ -28,7 +28,7 @@ jobs:
 
     - name: Sync changes
       run: |
-        rsync -av --delete --partial --partial-dir=.rsync-partial --exclude='.git' . target-repo/ || true
+        rsync -av --delete --partial --partial-dir=.rsync-partial --exclude='.git' ./ target-repo/ || true
         cd target-repo
         git config --global user.email "yangzhenzhen0119@gmail"
         git config --global user.name "leetreeyoung"
