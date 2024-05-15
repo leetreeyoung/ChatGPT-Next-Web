@@ -16,6 +16,7 @@ jobs:
       with:
         repository: leetreeyoung/ChatGPT-Next-Web
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 1
 
     - name: Checkout target repository
       uses: actions/checkout@v2
@@ -23,10 +24,11 @@ jobs:
         repository: leetreeyoung/ChatGPT-Next-Web-Storage-2
         token: ${{ secrets.TOKEN }}
         path: target-repo
+        fetch-depth: 1
 
     - name: Sync changes
       run: |
-        rsync -a --delete --partial --partial-dir=.rsync-partial --exclude='.git' . target-repo/ || true
+        rsync -av --delete --partial --partial-dir=.rsync-partial --exclude='.git' . target-repo/ || true
         cd target-repo
         git config --global user.email "yangzhenzhen0119@gmail"
         git config --global user.name "leetreeyoung"
