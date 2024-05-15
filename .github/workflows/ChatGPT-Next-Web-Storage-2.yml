@@ -3,7 +3,7 @@ name: Sync to ChatGPT-Next-Web-Storage-2
 # 定时触发（例如，每天凌晨3点）
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:  
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
 
     - name: Sync changes
       run: |
-        rsync -av --delete --exclude='.git' source-repo/ target-repo/
+        rsync -av --delete --exclude='.git' source-repo/ target-repo/ || true
         cd target-repo
         git config --global user.email "yangzhenzhen0119@gmail"
         git config --global user.name "leetreeyoung"
